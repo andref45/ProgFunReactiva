@@ -8,12 +8,12 @@ val l = (x : Double) => 1/Math.sqrt(x-1)
 val m = (x : Double) => 1/(1+Math.pow(x,2))
 
 //Simpson 1/3 compuesta
-def integralCompuesta(a : Int, b : Int, n :  Int, f: Double => Double): Double = {
+def integralCompuesta(a : Int, b : Int, n :  Int, f : Double => Double): Double = {
   val h = (b-a)/n
   val xj = (j : Double) => a + (j * h)
   val fun = (j : Double) => f(xj(2 * j - 2))+ 4 * f(xj(2 * j - 1))+ f(xj(2 * j))
   //Rango n/2
-  (1 to 2).map(fun(_))(h/3)
+  (h/3) * (1 to 2).map(fun(_)).sum
 }
 
 integralCompuesta(3,5,f)
@@ -40,3 +40,5 @@ integralCompExtendida(1,2,j)
 integralCompExtendida(0,1,k)
 integralCompExtendida(2,3,l)
 integralCompExtendida(0,1,m)
+
+def err(a : Double, b : Double) : Double = (a - b).abs
