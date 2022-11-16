@@ -15,8 +15,12 @@ val v04 = 1.09861
 val v05 = 1.71828
 val v06 = 0.828427
 val v07 = 0.785398
+//Simpson 1/3
+def integracion(a:Int, b:Int ,f:Double => Double) : Double= {
+  (b-a)*((f(a)+4*f((a+b)/2)+f(b))/6)
+}
 
-//Simpson 1/3 compuesta
+//Simpson compuesta
 def integralCompuesta(a : Int, b : Int, n :  Int, f : Double => Double): Double = {
   val h = (b-a)/n
   val xj = (j : Double) => a + (j * h)
