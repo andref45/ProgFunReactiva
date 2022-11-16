@@ -15,11 +15,6 @@ val v04 = 1.09861
 val v05 = 1.71828
 val v06 = 0.828427
 val v07 = 0.785398
-//Simpson 1/3
-def integracion(a:Int, b:Int ,f:Double => Double) : Double= {
-  (b-a)*((f(a)+4*f((a+b)/2)+f(b))/6)
-}
-
 //Simpson compuesta
 def integralCompuesta(a : Int, b : Int, n :  Int, f : Double => Double): Double = {
   val h = (b-a)/n
@@ -28,7 +23,6 @@ def integralCompuesta(a : Int, b : Int, n :  Int, f : Double => Double): Double 
   //Rango n/2
   (h/3) * (1 to (n/2)).map(fun(_)).sum
 }
-
 integralCompuesta(3,5,f)
 integralCompuesta(0,2,h)
 integralCompuesta(-1,1,i)
@@ -38,14 +32,14 @@ integralCompuesta(2,3,l)
 integralCompuesta(0,1,m)
 
 //Simpson 1/3 extendida
-def integralCompExtendida(a:Double, b:Double, f:Double=>Double) : Double = {
+def integralCompExtendida(a : Double, b : Double, f: Double => Double) : Double = {
   val n = (2 * (b - a)).toInt
   val h = (b-a)/n
-  val i = (1 to n-1 by 2).toList
+  val i = (1 until n by 2).toList
   val j = (2 to n-2 by 2).toList
   val sumI = i.map(x => f(a + x * h)).sum
   val sumJ = j.map(x => f(a + x * h)).sum
-  (h/3) * (  f(a) +  (4 * sumI) + (2 * sumJ) +  f(b)  )
+  (h/3) * (f(a) + (4 * sumI) + (2 * sumJ) + f(b))
 }
 val ie1 = integralCompExtendida(3,5,f)
 val ie2 = integralCompExtendida(0,2,h)
@@ -56,3 +50,11 @@ val ie6 = integralCompExtendida(2,3,l)
 val ie7 = integralCompExtendida(0,1,m)
 
 def err(a : Double, b : Double) : Double = (a - b).abs
+err(v01, ie1)
+err(v02, ie2)
+err(v03, ie3)
+err(v04, ie4)
+err(v05, ie5)
+err(v06, ie6)
+err(v07, ie7)
+
