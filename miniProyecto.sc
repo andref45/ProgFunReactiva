@@ -13,7 +13,7 @@ def integralCompuesta(a : Int, b : Int, n :  Int, f : Double => Double): Double 
   val xj = (j : Double) => a + (j * h)
   val fun = (j : Double) => f(xj(2 * j - 2))+ 4 * f(xj(2 * j - 1))+ f(xj(2 * j))
   //Rango n/2
-  (h/3) * (1 to 2).map(fun(_)).sum
+  (h/3) * (1 to (n/2)).map(fun(_)).sum
 }
 
 integralCompuesta(3,5,f)
