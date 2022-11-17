@@ -16,18 +16,18 @@ val v06 = 0.828427
 val v07 = 0.785398
 //Simpson compuesta
 def integralCompuesta(a: Int, b: Int, n: Int, f: Double => Double): Double = {
-  val h = ((b - a) / n)
+  val h = (b - a) / n
   val xj = (j: Double) => a + (j * h)
   val fun = (j: Double) => f(xj(2 * j - 2)) + 4 * f(xj(2 * j - 1)) + f(xj(2 * j))
   (h/3) * (1 to (n/2)).map(fun(_)).sum
 }
-val ic1 = integralCompuesta(3,5,20,f)
-val ic2 =integralCompuesta(0,2,20,h)
-val ic3 = integralCompuesta(-1,1,20,i)
-val ic4 =integralCompuesta(1,2,20,j)
-val ic5 =integralCompuesta(0,1,20,k)
-val ic6 =integralCompuesta(2,3,20,l)
-val ic7 =integralCompuesta(0,1,20,m)
+val ic1 = integralCompuesta(3,5,2,f)
+val ic2 = integralCompuesta(0,2,6,h)
+val ic3 = integralCompuesta(-1,1,4,i)
+val ic4 = integralCompuesta(1,2,8,j)
+val ic5 = integralCompuesta(0,1,10,k)
+val ic6 = integralCompuesta(2,3,12,l)
+val ic7 = integralCompuesta(0,1,2,m)
 
 
 //Simpson 1/3 extendida
@@ -57,7 +57,7 @@ err(v04, ic4)
 err(v05, ic5)
 err(v06, ic6)
 err(v07, ic7)
-//Error Simpson 1/3extendida
+//Error Simpson 1/3 extendida
 err(v01, ie1)
 err(v02, ie2)
 err(v03, ie3)
