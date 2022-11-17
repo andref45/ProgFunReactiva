@@ -16,20 +16,19 @@ val v05 = 1.71828
 val v06 = 0.828427
 val v07 = 0.785398
 //Simpson compuesta
-def integralCompuesta(a : Int, b : Int, n :  Int, f : Double => Double): Double = {
-  val h = (b-a)/n
-  val xj = (j : Double) => a + (j * h)
-  val fun = (j : Double) => f(xj(2 * j - 2))+ 4 * f(xj(2 * j - 1))+ f(xj(2 * j))
-  //Rango n/2
+def integralCompuesta(a: Int, b: Int, n: Int, f: Double => Double): Double = {
+  val h = ((b - a) / n)
+  val xj = (j: Double) => a + (j * h)
+  val fun = (j: Double) => f(xj(2 * j - 2)) + 4 * f(xj(2 * j - 1)) + f(xj(2 * j))
   (h/3) * (1 to (n/2)).map(fun(_)).sum
 }
-integralCompuesta(3,5,f)
-integralCompuesta(0,2,h)
-integralCompuesta(-1,1,i)
-integralCompuesta(1,2,j)
-integralCompuesta(0,1,k)
-integralCompuesta(2,3,l)
-integralCompuesta(0,1,m)
+val ic1 = integralCompuesta(3,5,6,f)
+val ic2 =integralCompuesta(0,2,6,h)
+val ic3 = integralCompuesta(-1,1,6,i)
+val ic4 =integralCompuesta(1,2,6,j)
+val ic5 =integralCompuesta(0,1,6,k)
+val ic6 =integralCompuesta(2,3,6,l)
+val ic7 =integralCompuesta(0,1,6,m)
 
 //Simpson 1/3 extendida
 def integralCompExtendida(a : Double, b : Double, f: Double => Double) : Double = {
